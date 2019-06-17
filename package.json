@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy:firebase" : "rm -rf dist && ng build --prod --output-path='dist/' && firebase deploy"
+    "deploy:firebase": "rm -rf dist && ng build --prod --output-path='dist/' && firebase deploy"
   },
   "private": true,
   "dependencies": {

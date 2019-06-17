@@ -20,6 +20,7 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { GamepageComponent } from './gamepage/gamepage.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {
         path : '',
@@ -55,7 +57,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       {
         path: 'admin/adminpage',
         component: AdminPageComponent,
-        canActivate : [AuthGuard]
+        canActivate : [AuthGuard,AdminAuthGuard]
       }
     ])
   ],
