@@ -36,12 +36,14 @@ export class AuthService {
     return this.user$.pipe(
       switchMap(
         user => {
-          if(user) 
+          if(user){
+            console.log('suip');
             return this.userService.get(user.uid).valueChanges();
-
+          }
           return of(null);
         }
       )
     );
   }
+
 }

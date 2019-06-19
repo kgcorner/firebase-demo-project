@@ -1,3 +1,4 @@
+import { PointsService } from './points.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
 import { UserService } from './user.service';
 import { AuthGuard } from './auth-guard.service';
@@ -66,7 +67,8 @@ import { HttpClientModule } from '@angular/common/http';
     AuthService,
     AuthGuard,
     UserService,
-    AdminAuthGuard
+    AdminAuthGuard,
+    PointsService
   ],
   bootstrap: [AppComponent]
 })

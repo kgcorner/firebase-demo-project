@@ -15,13 +15,21 @@ export class AppComponent {
      private userService : UserService,
      router : Router){
 
-    auth.user$.subscribe(user => {
-      if(user){
-        userService.save(user);
-        let returnUrl = localStorage.getItem('returnUrl');
-        router.navigateByUrl(returnUrl);
-      }
-    });
+     auth.user$.subscribe(user =>{
+       if(user){
+         userService.get(user.uid).valueChanges().subscribe(u=>{
+           if(u !== null){
+             userService.saveWithOutPoints(user);
+           }else{
+             userService.save(user);
+           }
+         })
+       }
+     })
+
+    let returnUrl = localStorage.getItem('returnUrl');
+    router.navigateByUrl(returnUrl);
+    this.userService.getAllPoints();
   }
 }
 

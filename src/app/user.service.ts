@@ -2,7 +2,7 @@ import { AppUser } from './models/app-user';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, mapTo } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 
 @Injectable({
@@ -15,36 +15,38 @@ export class UserService {
   ) { }
 
   save(user : firebase.User){
-    if(this.isAlreadyInDataBase(user)){
-      if(user.email === 'sudipcold@gmail.com'){
-        this.db.object('/user/' + user.uid).update({
-          name: user.displayName,
-          email:user.email,
-          isAdmin : true,
-          points : 200
-        });
-      }else{
-        this.db.object('/user/' + user.uid).update({
-          name: user.displayName,
-          email:user.email,
-          isAdmin : false,
-          points : 200
-        });
-      }
+
+    if(user.email === 'sudipcold@gmail.com'){
+      this.db.object('/user/' + user.uid).update({
+        name: user.displayName,
+        email:user.email,
+        isAdmin : true,
+        points : 1000
+      });
     }else{
-      if(user.email === 'sudipcold@gmail.com'){
-        this.db.object('/user/' + user.uid).update({
-          name: user.displayName,
-          email:user.email,
-          isAdmin : true
-        });
-      }else{
-        this.db.object('/user/' + user.uid).update({
-          name: user.displayName,
-          email:user.email,
-          isAdmin : false
-        });
-      }
+      this.db.object('/user/' + user.uid).update({
+        name: user.displayName,
+        email:user.email,
+        isAdmin : false,
+        points : 1000
+      });
+    }
+  }
+
+  saveWithOutPoints(user : firebase.User){
+
+    if(user.email === 'sudipcold@gmail.com'){
+      this.db.object('/user/' + user.uid).update({
+        name: user.displayName,
+        email:user.email,
+        isAdmin : true
+      });
+    }else{
+      this.db.object('/user/' + user.uid).update({
+        name: user.displayName,
+        email:user.email,
+        isAdmin : false
+      });
     }
   }
 
@@ -52,13 +54,18 @@ export class UserService {
     return this.db.object('/user/' + uid);
   }
 
-  isAlreadyInDataBase(user : firebase.User): Observable<boolean>{
-    return this.get(user.uid).valueChanges().pipe(
-      map(user =>{
-        if(user)
-          return true;
-        return false;
-      })
-    )
+  getAllPoints(){
+    this.db.list('/user/').valueChanges().subscribe((users : AppUser[]) =>{
+      let list : any[];
+      for(let i = 0; i < users.length; i++){
+        this.db.object('/points/' + (i+1)).update({
+          userName: users[i].name,
+          userPoints: users[i].points  
+        })
+        //console.log(users[i].name);
+        //console.log(users[i].points);
+      }
+    });
   }
+
 }

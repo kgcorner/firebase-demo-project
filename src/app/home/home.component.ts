@@ -1,3 +1,5 @@
+import { PointsService } from './../points.service';
+import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  matches;
-  constructor() { }
+  points;
+
+  constructor(private service : PointsService) { }
 
   ngOnInit() {
+    this.points = this.service.getAllPoints();
 
   }
 

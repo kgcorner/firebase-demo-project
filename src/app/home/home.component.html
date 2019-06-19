@@ -1,7 +1,43 @@
-<p>
-  home works!
-</p>
+<div id="pointsTable" >
 
-<p>
-  Testing api
-</p>
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/ICC_Cricket_World_Cup_2019_logo.svg/1200px-ICC_Cricket_World_Cup_2019_logo.svg.png"  class="img-thumbnail" style="height:100px;width: 100px; border-color: white">
+    <h1 class="display-4">ICC Cricket World Cup</h1>
+</div>
+
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Free</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
+        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
+      </div>
+    </div>
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Betting Points Table</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+          <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Points</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let point of (points | async)" class="scrollit">
+                <tr>
+                  <td>{{point.userName}}</td>
+                  <td>{{point.userPoints}}</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
