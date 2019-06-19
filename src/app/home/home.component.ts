@@ -1,6 +1,7 @@
+import { FlagIcon } from './../utilites/flagicon';
 import { PointsService } from './../points.service';
-import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
+import { BindingFlags } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +11,12 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   points;
-
-  constructor(private service : PointsService) { }
+  flags = new FlagIcon().flagList;
+ 
+  
+  constructor(private service : PointsService) { 
+    //console.log(this.flags);
+  }
 
   ngOnInit() {
     this.points = this.service.getAllPoints();

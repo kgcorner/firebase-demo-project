@@ -6,3 +6,8 @@
 .table-wrapper-scroll-y {
     display: block;
 }
+
+.flags{
+    height: 50px;
+    width: 50px;
+}
