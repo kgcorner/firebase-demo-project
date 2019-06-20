@@ -22,6 +22,8 @@ import { LoginComponent } from './login/login.component';
 import { GamepageComponent } from './gamepage/gamepage.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { GameService } from './game.service';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import { HttpClientModule } from '@angular/common/http';
     AuthGuard,
     UserService,
     AdminAuthGuard,
-    PointsService
+    PointsService,
+    GameService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

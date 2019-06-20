@@ -1,7 +1,7 @@
+import { GameService } from './../game.service';
 import { FlagIcon } from './../utilites/flagicon';
 import { PointsService } from './../points.service';
 import { Component, OnInit } from '@angular/core';
-import { BindingFlags } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-home',
@@ -12,15 +12,18 @@ export class HomeComponent implements OnInit {
 
   points;
   flags = new FlagIcon().flagList;
+  matches;
  
   
-  constructor(private service : PointsService) { 
+  constructor(private pointService : PointsService,
+    private gameService :  GameService) { 
     //console.log(this.flags);
+
   }
 
   ngOnInit() {
-    this.points = this.service.getAllPoints();
-
+    this.points = this.pointService.getAllPoints();
+    this.matches = this.gameService.getMatches();
   }
 
 

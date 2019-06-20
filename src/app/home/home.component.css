@@ -10,4 +10,10 @@
 .flags{
     height: 50px;
     width: 50px;
+    align-content: center
+}
+
+.team{
+    float: left;
+    padding: 5px;
 }

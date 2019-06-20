@@ -6,14 +6,39 @@
 </div>
 
 <div class="container">
-  <div class="card-deck mb-3 text-center">
+  <div class="card-deck mb-2 text-center">
     <div class="card mb-4 box-shadow">
       <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Free</h4>
-      </div>
+        <h4 class="my-0 font-weight-normal">Today's Matches</h4>
+      </div> 
       <div class="card-body">
-        <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
+            <div class="container">
+                <div *ngFor="let m of (matches | async)">
+                    <div *ngFor="let img of flags">
+                      <div *ngIf="img.c === m['team1']">
+                        <div>
+                            <div class ="team">
+                                <h5>{{img.c}}</h5>
+                            </div>
+                            <div class ="team">
+                              <img class="flags img-thumbnail" src={{img.i}}>
+                            </div>
+                            <div class="team">VS</div>
+                        </div>
+                      </div>
+                      <div *ngIf="img.c === m['team2']">
+                            <div>
+                                <div class ="team">
+                                  <img class="flags img-thumbnail" src={{img.i}}>
+                                </div>
+                                <div class ="team">
+                                    <h5>{{img.c}}</h5>
+                                </div>
+                            </div>
+                      </div>     
+                </div> 
+            </div>
+        </div>
       </div>
     </div>
     <div class="card mb-4 box-shadow">
@@ -43,9 +68,37 @@
 </div>
 
 
-<div *ngFor="let img of flags">
+<!-- <div *ngFor="let img of flags">
    <p>{{img.c}}</p><img class = "flags img-thumbnail" src={{img.i}}>
-</div>
+</div> -->
+
+<!-- <div class="container">
+    <div *ngFor="let m of (matches | async)">
+        <div *ngFor="let img of flags">
+          <div *ngIf="img.c === m['team1']">
+            <div>
+                <div class ="team">
+                    <h5>{{img.c}}</h5>
+                </div>
+                <div class ="team">
+                  <img class="flags img-thumbnail" src={{img.i}}>
+                </div>
+                <div class="team">VS</div>
+            </div>
+          </div>
+          <div *ngIf="img.c === m['team2']">
+                <div>
+                    <div class ="team">
+                      <img class="flags img-thumbnail" src={{img.i}}>
+                    </div>
+                    <div class ="team">
+                        <h5>{{img.c}}</h5>
+                    </div>
+                </div>
+         </div>     
+    </div>
+
+</div> -->
 
 
 
