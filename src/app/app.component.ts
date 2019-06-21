@@ -17,6 +17,7 @@ export class AppComponent {
 
      auth.user$.subscribe(user =>{
        if(user){
+         localStorage.setItem('currentUserId',user.uid);
          userService.get(user.uid).valueChanges().subscribe(u=>{
            if(u !== null){
              userService.saveWithOutPoints(user);

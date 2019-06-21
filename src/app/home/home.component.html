@@ -5,65 +5,69 @@
     <h1 class="display-4">ICC Cricket World Cup</h1>
 </div>
 
-<div class="container">
-  <div class="card-deck mb-2 text-center">
-    <div class="card mb-4 box-shadow">
+<div class="container rowForTeam">
+  <div class="card-deck mb-2 text-center colForTeam" style="width:45%;vertical-align: top">
+    <div class="card mb-4 box-shadow" style="height: 300px;" >
       <div class="card-header">
         <h4 class="my-0 font-weight-normal">Today's Matches</h4>
       </div> 
       <div class="card-body">
             <div class="container">
                 <div *ngFor="let m of (matches | async)">
-                    <div *ngFor="let img of flags">
-                      <div *ngIf="img.c === m['team1']">
-                        <div>
-                            <div class ="team">
-                                <h5>{{img.c}}</h5>
+                    <!-- <div *ngFor="let img of flags"> -->
+                      <!-- <div *ngIf=" === m['team1']"> -->
+                        <div class="rowForTeam">
+                            <div class ="colForTeam">
+                                <h5>{{m['team1']}}</h5>
                             </div>
-                            <div class ="team">
-                              <img class="flags img-thumbnail" src={{img.i}}>
+                            <div class ="colForTeam">
+                              <img class="flags img-thumbnail" src="{{flags[m['team1']]}}">
                             </div>
-                            <div class="team">VS</div>
+                            <div class="colForTeam">VS</div>
+                      
+                      <!-- </div> -->
+                      <!-- <div *ngIf="img.c === m['team2']"> -->
+                            
+                                <div class ="colForTeam">
+                                  <img class="flags img-thumbnail" src="{{flags[m['team2']]}}">
+                                </div>
+                                <div class ="colForTeam">
+                                    <h5>{{m['team2']}}</h5>
+                                </div>
+                            
                         </div>
-                      </div>
-                      <div *ngIf="img.c === m['team2']">
-                            <div>
-                                <div class ="team">
-                                  <img class="flags img-thumbnail" src={{img.i}}>
-                                </div>
-                                <div class ="team">
-                                    <h5>{{img.c}}</h5>
-                                </div>
-                            </div>
-                      </div>     
+                      <!-- </div>      -->
                 </div> 
             </div>
         </div>
       </div>
     </div>
-    <div class="card mb-4 box-shadow">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Betting Points Table</h4>
-      </div>
-      <div class="card-body">
-        <div class="table-wrapper-scroll-y my-custom-scrollbar">
-          <table class="table">
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">Points</th>
-                </tr>
-              </thead>
-              <tbody *ngFor="let point of (points | async)" class="scrollit">
-                <tr>
-                  <td>{{point.userName}}</td>
-                  <td>{{point.userPoints}}</td>
-                </tr>
-              </tbody>
-            </table>
+    <div class="card-deck mb-2 text-center colForTeam" style="width:45%;vertical-align: top" >
+      <div class="card mb-4 box-shadow" style="height: 300px;" >
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Betting Points Table</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Points</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let point of (points | async)" class="scrollit">
+                  <tr>
+                    <td>{{point.userName}}</td>
+                    <td>{{point.userPoints}}</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
         </div>
       </div>
     </div>
+    
   </div>
 </div>
 

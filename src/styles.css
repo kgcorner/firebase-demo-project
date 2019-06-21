@@ -8,3 +8,13 @@ body {
 .myList{
     width: 300px;
 }
+
+.rowForTeam{
+    width: 100%;    
+}
+.colForTeam{
+    display: inline-block;
+    width: 15%;
+    margin: 2%;
+    vertical-align: middle;
+}

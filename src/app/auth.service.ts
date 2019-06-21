@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class AuthService {
 
   user$ : Observable<firebase.User>;
+  LoggedInUserUid : string;
 
   constructor(
     private userService : UserService,
@@ -29,6 +30,7 @@ export class AuthService {
   }
 
   logout(){
+    localStorage.removeItem('currentUserId');
     this.afAuth.auth.signOut();
   }
 
@@ -37,7 +39,7 @@ export class AuthService {
       switchMap(
         user => {
           if(user){
-            console.log('suip');
+            //console.log('suip');
             return this.userService.get(user.uid).valueChanges();
           }
           return of(null);
