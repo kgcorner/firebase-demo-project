@@ -24,7 +24,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { GameService } from './game.service';
 import { DatePipe } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateMatchComponent } from './admin/create-match/create-match.component';
+import { UpdateMatchComponent } from './admin/update-match/update-match.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     AdminPageComponent,
     LoginComponent,
-    GamepageComponent
+    GamepageComponent,
+    CreateMatchComponent,
+    UpdateMatchComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +48,7 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {
         path : '',
@@ -62,6 +67,11 @@ import { FormsModule } from '@angular/forms';
       {
         path: 'admin/adminpage',
         component: AdminPageComponent,
+        canActivate : [AuthGuard,AdminAuthGuard]
+      },
+      {
+        path: 'admin/matches/create',
+        component: CreateMatchComponent,
         canActivate : [AuthGuard,AdminAuthGuard]
       }
     ])

@@ -1,0 +1,18 @@
+<form class="card create-match-form" (ngSubmit)="submit(matchForm.value)" [formGroup]="matchForm">
+  <div class="card bg-success text-white">
+    <div class="card-body">Match Created Successfully</div>
+  </div>
+  <div class="form-group">
+      <label for="email">Date</label>
+      <input type="date" formControlName="date" class="form-control" id="date" >
+  </div>
+  <div class="form-group">
+    <label for="team1">Team 1</label>
+    <input type="text"  formControlName="team1" class="form-control" id="team1">
+  </div>
+  <div class="form-group">
+    <label for="team2">Team2:</label>
+    <input type="text"  formControlName="team2" class="form-control" id="team2">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

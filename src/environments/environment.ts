@@ -4,8 +4,15 @@
 
 export const environment = {
   production: false,
+  pointsPerBet : 100,
   firebase :{
-   //add config here
+    apiKey: "AIzaSyDTB39-Kb5U5YeYHAlFPir0RGLFBEu5Zlk",
+      authDomain: "fir-demo-55730.firebaseapp.com",
+      databaseURL: "https://fir-demo-55730.firebaseio.com",
+      projectId: "fir-demo-55730",
+      storageBucket: "fir-demo-55730.appspot.com",
+      messagingSenderId: "679337848208",
+      appId: "1:679337848208:web:b5ee40c57ad2e786"
   }
 };
 

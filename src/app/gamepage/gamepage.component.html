@@ -1,13 +1,17 @@
 
 <div *ngFor="let m of (matches | async)">
-
-    <div class="container rowForTeam">
+    <div class="container rowForTeam">        
         <div class="card-deck mb-2 text-center colForTeam" style="width:45%;vertical-align: top">
           <div class="card mb-4 box-shadow" style="height: 300px;" >
             <div class="card-header">
               <h4 class="my-0 font-weight-normal">Today's Matches</h4>
             </div> 
             <div class="card-body">
+                  <div class="card bg-danger" *ngIf="error && m['id'] == matchInAction">
+                    <div class="card-body">
+                        {{errorMessage}}
+                    </div>
+                  </div>
                   <div class="container">
                       <div>
                         <div class="rowForTeam">
@@ -27,7 +31,7 @@
                         </div>
                       </div> 
                   </div>
-                  <form #f="ngForm" (ngSubmit)="submit(f)">
+                  <form #f="ngForm" (ngSubmit)="submit(f,m)">
                       <div ngModelGroup="match" #contact="ngModelGroup">
                           <div class="form-group">
                               <label for="contactMethod"></label>

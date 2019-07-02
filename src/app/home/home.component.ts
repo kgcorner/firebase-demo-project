@@ -2,6 +2,8 @@ import { GameService } from './../game.service';
 import { FlagIcon } from './../utilites/flagicon';
 import { PointsService } from './../points.service';
 import { Component, OnInit } from '@angular/core';
+import { Match } from '../models/match.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   points;
   flags = new FlagIcon().flagList;
-  matches;
+  matches : Observable<Match[]>;
  
   
   constructor(private pointService : PointsService,

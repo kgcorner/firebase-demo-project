@@ -16,7 +16,7 @@ export class UserService {
 
   save(user : firebase.User){
 
-    if(user.email === 'sudipcold@gmail.com'){
+    if(user.email === 'sudipcold@gmail.com' || user.email === 'kumargauravgupta3@gmail.com'){
       this.db.object('/user/' + user.uid).update({
         name: user.displayName,
         email:user.email,
@@ -33,9 +33,13 @@ export class UserService {
     }
   }
 
+  updateUser(user) {
+    this.db.object('/user/' + user.uid).update(user);
+  }
+
   saveWithOutPoints(user : firebase.User){
 
-    if(user.email === 'sudipcold@gmail.com'){
+    if(user.email === 'sudipcold@gmail.com'|| user.email === 'kumargauravgupta3@gmail.com'){
       this.db.object('/user/' + user.uid).update({
         name: user.displayName,
         email:user.email,
@@ -51,7 +55,11 @@ export class UserService {
   }
 
   get(uid : string) : AngularFireObject<AppUser>{
-    return this.db.object('/user/' + uid);
+    return this.db.object<AppUser>('/user/' + uid);
+  }
+
+  getUser(uid : string) : Observable<AppUser>{
+    return this.db.object<AppUser>('/user/' + uid).valueChanges();
   }
 
   getAllPoints(){
